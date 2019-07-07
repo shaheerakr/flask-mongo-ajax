@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body onload="Read()" class="">
+
+  <div class="text-white bg-danger text-center nav-bar">
+    <h2 class="text-center title">Developer Manager Application</h2>
+    <!-- Button trigger modal -->
+
+  </div>
+
+  <div class="text-center btns-div">
+    <button type="button" class="btn btn-secondary add-btn" data-toggle="modal" data-target="#exampleModalCenter">
+      Add Developer
+    </button>
+    <button type="button" class="btn btn-info sort-btn" onclick="sort()">Sort alphabetically</button>
+  </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-center">
+          <h5 class="modal-title text-white text-center" id="exampleModalLongTitle">Add Your Developer Details</h5>
+
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="text-white">&times;</span>
+          </button>
+
+        </div>
+
+        <div class="modal-body">
+
+          <form action="http://localhost:5000/submit" method = "POST" class=" p-3" id="form">
+
+            <div class="form-group">
+              <label for=""><img src="https://img.icons8.com/material/24/000000/employee-card.png"> Name:</label>
+              <input type="text" name="Name" autocomplete="off" class="form-control" id="name" placeholder="Enter name" required>
+
+            </div>
+            <div class="form-group">
+              <label for=""><img src="https://img.icons8.com/ios/20/000000/secured-letter.png"> Email:</label>
+              <input type="email" name="Email" autocomplete="off" class="form-control" id="email" placeholder="Enter email" validate
+                required>
+            </div>
+            <div class="form-group">
+              <label for=""><img src="https://img.icons8.com/material/24/000000/collaborator-female.png">
+                Designation:</label>
+              <input type="text" name="Designation" autocomplete="off" class="form-control" id="designation"
+                placeholder="Enter designation" required>
+
+            </div>
+            <div class="form-group">
+              <label for=""><img src="https://img.icons8.com/metro/22/000000/source-code.png"> Languages:</label>
+              <input type="text" name = "Languages" autocomplete="off" class="form-control" id="language" placeholder="Enter languages"
+                required>
+
+            </div>
+            <div class="form-group">
+              <label for=""><img src="https://img.icons8.com/windows/30/000000/cash-in-hand.png"> Salary:</label>
+              <input type="number" name="Salary" autocomplete="off" class="form-control" id="salary" placeholder="Enter salary"
+                required>
+            </div>
+            <div class="form-group">
+              <label for=""><img src="https://img.icons8.com/material/24/000000/link.png"> Linkedin Account:</label>
+              <input type="text" name="Linkedin" autocomplete="off" class="form-control" id="linkedin"
+                placeholder="Enter linkedin account" required>
+            </div>
+            <div class="form-group">
+              <label for=""><img src="https://img.icons8.com/material/24/000000/link.png"> Github Account:</label>
+              <input type="text" name="GitHub" autocomplete="off" class="form-control" id="github" placeholder="Enter github account"
+                required>
+            </div>
+            <div class="form-group">
+              <label for=""><img src="https://img.icons8.com/ios-glyphs/24/000000/pictures-folder.png"> Github
+                Photo:</label>
+              <input type="text" name="Photo" autocomplete="off" class="form-control" id="photo" placeholder="Enter Picture URL"
+                required
+                value="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-plus"></i>Add developer
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Cards Structure -->
+  <div class="container">
+    <div class="user row" id="developerCard">
+      <!-- ALL developers will be placed here -->
+    </div>
+
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

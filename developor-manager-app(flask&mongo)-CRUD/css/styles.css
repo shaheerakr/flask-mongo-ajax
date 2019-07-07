@@ -1,0 +1,22 @@
+.fa {
+    font-size: 20px !important;
+}
+.update-btn, .delete-btn {
+    margin: 1%;
+}
+.add-btn,.sort-btn {
+    font-size: 18px !important;
+}
+.btns-div {
+    margin-bottom: 2%;
+}
+.user  {
+    width: 100%;
+}
+
+.nav-bar {
+   padding: 1%;
+   margin-bottom: 2%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+
+}
