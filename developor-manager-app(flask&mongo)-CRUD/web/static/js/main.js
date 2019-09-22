@@ -13,6 +13,16 @@ document.getElementById("form").addEventListener("submit", (e) => {
 
 // READS ALL DEVELOPERS 
 function Read() {
+    $.ajax({
+        dataType: "json",
+        url: "/read",
+        success: function(response){
+            console.log(response)
+        },
+        error: function(response){
+            console.log(response)
+        }
+      });
     employee.innerHTML = ''
     developers2 = JSON.parse(localStorage.getItem("developers"))
     if (developers2 !== null) {
