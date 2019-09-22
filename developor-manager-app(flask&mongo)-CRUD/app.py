@@ -22,7 +22,7 @@ db = client['developers']
 table = db['dev-table']
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='web/static', template_folder='web/templates')
 
 @app.route('/',methods = ['GET','POST'])
 def home():
@@ -30,16 +30,18 @@ def home():
 
 @app.route('/submit',methods = ['POST','GET'])
 def submit():
+    #dev = request.get_json()
     if request.method == 'POST':
         result = request.form
-        name = request.form.get('Name')
-        email = request.form.get('Email')
-        designation = request.form.get('Designation')
-        languages = request.form.get('Languages')
-        salary = request.form.get('Salary')
-        linkedin = request.form.get('linkedin')
-        gitHub = request.form.get('GitHub')
-        photo = request.form.get('Photo')
+        name = request.form['name']
+        email = request.form['email']
+        designation = request.form['designation']
+        languages = request.form['language']
+        salary = request.form['salary']
+        linkedin = request.form['linkedin']
+        gitHub = request.form['github']
+        photo = request.form['photo']
+        '''
         table.insert_one({
                 'name': name,
                 'email': email,
@@ -51,7 +53,8 @@ def submit():
                 'photo': photo,
                 'date': datetime.datetime.now()
                 })
-        return render_template('result.html',result = result)
+        '''
+        return json.dumps({'status':'okay','result':result})
  
 if __name__ == '__main__':
     app.run(debug= True, port= 5000)
