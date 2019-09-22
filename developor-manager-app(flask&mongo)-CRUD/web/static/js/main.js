@@ -3,6 +3,14 @@ var developers = JSON.parse(localStorage.getItem("developers"));//Retrieve the s
 if (developers == null) {
     var developers = []
 }
+var employee = document.getElementById('developerCard')
+
+document.getElementById("form").addEventListener("submit", (e) => {
+    e.preventDefault()
+    Read()
+    document.getElementById("form").reset()
+});
+
 // READS ALL DEVELOPERS 
 function Read() {
     employee.innerHTML = ''
@@ -36,13 +44,6 @@ function Read() {
     }
 }
 
-var employee = document.getElementById('developerCard')
-
-document.getElementById("form").addEventListener("submit", (e) => {
-    e.preventDefault()
-    Read()
-    document.getElementById("form").reset()
-});
 //CREATE DEVELOPER FUNCTION
 $(document).ready(function() {
     $('form').on('submit', function(event) {
