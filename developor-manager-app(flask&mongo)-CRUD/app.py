@@ -33,6 +33,7 @@ def submit():
     #dev = request.get_json()
     if request.method == 'POST':
         result = request.form
+        '''
         name = request.form['name']
         email = request.form['email']
         designation = request.form['designation']
@@ -43,17 +44,9 @@ def submit():
         photo = request.form['photo']
         '''
         table.insert_one({
-                'name': name,
-                'email': email,
-                'designation': designation,
-                'languages': languages,
-                'salary': salary,
-                'linkedin': linkedin,
-                'gitHub': gitHub,
-                'photo': photo,
+                'data':result,
                 'date': datetime.datetime.now()
                 })
-        '''
         return json.dumps({'status':'okay','result':result})
  
 if __name__ == '__main__':

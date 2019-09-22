@@ -40,28 +40,9 @@ var employee = document.getElementById('developerCard')
 
 document.getElementById("form").addEventListener("submit", (e) => {
     e.preventDefault()
-    Create()
     Read()
     document.getElementById("form").reset()
 });
-/*
-function requestHandler(data,url) {
-    var Request = new XMLHttpRequest();
-    Request.open('POST', url, true);
-    //Request.onreadystatechange = sendData;
-    Request.send(data);
-    function sendData() {
-        //4 means request is complete , if you don't call `Request.send(data)` like I have in the previous function, in the line above ,then it means you have not even started the request (which is 1), if 1 is not even reached in the ready state, how can you check for 4 or for status 200. You must send first , so that ready state changes and sendData is called
-        if (Request.readyState == 4 && Request.status == 200) {
-          alert('Data sent ...');
-        } else {
-          alert('Connection FAIL,\nCheck connection and Retry !!!');
-          console.log(Request);
-        }
-    }
-//unless .send() is called, nothing moves forward..there will be no communication between the client and server,so here it also means when the request ready state changes from 1 to 2 , call sendData, similarly when it goes from 2 to 3 call sendData, and similarly for 3 to 4 , unless you dont call Request.send how will the readystate change, if readystate is not changing why will sendData be called at all.
-} 
-*/
 //CREATE DEVELOPER FUNCTION
 $(document).ready(function() {
     $('form').on('submit', function(event) {
@@ -79,19 +60,6 @@ $(document).ready(function() {
      event.preventDefault();
      });
 });
-function Create() {
-    var developer = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        designation: document.getElementById("designation").value,
-        language: document.getElementById("language").value,
-        salary: document.getElementById("salary").value,
-        linkedin: document.getElementById("linkedin").value,
-        github: document.getElementById("github").value,
-        photo: document.getElementById("photo").value
-    };
-
-}
 //UPDATE DEVELOPER FUNCTION
 function Update(i3) {
     let developers3 = JSON.parse(localStorage.getItem("developers"));
